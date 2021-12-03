@@ -1,0 +1,44 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+const signUpButton1 = document.getElementById('signUp1');
+const signInButton1 = document.getElementById('signIn1');
+const container1 = document.getElementById('container1');
+
+signUpButton1.addEventListener('click', () => {
+	container1.classList.add("right-panel-active");
+});
+
+signInButton1.addEventListener('click', () => {
+	container1.classList.remove("right-panel-active");
+});
+
+
+
+const candidat = document.getElementById('candidat');
+const entreprise = document.getElementById('entreprise');
+
+candidat.addEventListener('click', () => {
+	document.getElementById('sign-in-candidat').style.display = 'flex';
+	document.getElementById('sign-in-entreprise').style.display = 'none';
+});
+
+entreprise.addEventListener('click', () => {
+	document.getElementById('sign-in-candidat').style.display = 'none';
+	document.getElementById('sign-in-entreprise').style.display = 'flex';
+});
+

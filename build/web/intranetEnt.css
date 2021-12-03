@@ -1,0 +1,334 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 3, 2021, 6:06:29 PM
+    Author     : HP
+*/
+
+  .wrapper {
+    margin-top: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    display: flex;
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);
+  }
+
+  .wrapper .left {
+    width: 35%;
+    background: linear-gradient(to right, gray, white);
+    padding: 30px 25px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+    color: black;
+  }
+
+  .wrapper .left img {
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .wrapper .left h4 {
+    margin-bottom: 10px;
+  }
+
+  .wrapper .left p {
+    font-size: 12px;
+  }
+
+  .wrapper .right {
+    width: 65%;
+    background: #fff;
+    padding: 30px 25px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .wrapper .right .info,
+  .wrapper .right .projects {
+    margin-bottom: 25px;
+  }
+
+  .wrapper .right .info h3,
+  .wrapper .right .projects h3 {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+
+  .wrapper .right .info_data,
+  .wrapper .right .projects_data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+
+  .wrapper .right .info_data .data,
+  .wrapper .right .projects_data .data {
+    width: 45%;
+  }
+
+  .wrapper .right .info_data .data h4,
+  .wrapper .right .projects_data .data h4 {
+    color: #353c4e;
+    margin-bottom: 5px;
+  }
+
+  .wrapper .right .info_data .data p,
+  .wrapper .right .projects_data .data p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #919aa3;
+  }
+
+  .wrapper .social_media ul {
+    display: flex;
+
+    justify-content: center;
+  }
+
+  .wrapper .social_media ul li {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 45px;
+  }
+
+  .wrapper .social_media ul li a {
+    color: black;
+
+    font-size: 18px;
+  }
+
+  .myInput {
+    padding: 10px;
+    background-color: transparent;
+    border: 0px solid;
+    width: 240px;
+
+
+
+  }
+
+  .myInput:focus {
+    outline: none;
+  }
+
+  .envoyer {
+
+    border: none;
+
+    padding: 10px;
+    display: none;
+    border-radius: 0px 10px 10px 0px;
+
+  }
+
+  .input:hover .envoyer {
+    display: initial;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+    width: 300px;
+    border-radius: 10px;
+
+  }
+
+  .ajouter {
+    border: 2px solid black;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .li {
+    width: 300px;
+  }
+
+  .dat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+
+  }
+  
+.recherche{
+    margin-top: 20px;
+     width: 1000px; 
+    height: 60px;
+    padding-left: 20px;
+}
+.recherche *, ::before, ::after{
+     box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+    color: white; 
+    border-collapse: collapse;
+    
+    width: 500px; 
+    height: 60px;
+    cursor: pointer;
+    margin: 10px ;
+    border: 2px solid #19B3D3;
+     border-collapse: collapse;
+    width: 100%;
+     border: 1px solid #ddd;
+    font-size: 10px;
+    
+     font-size:x-large;
+     color: black ; 
+      margin-left: 200px;
+}
+body{
+ 
+   
+    background-repeat:no-repeat;
+    background-size: 100%;
+    height: 100%;
+   width:100%;
+   overflow-x: hidden;
+    font: 16px Arial; 
+  margin-top: 30px;
+}
+.local{
+position: relative;
+top: 8px;
+}
+#emploi{
+    position: relative;
+top: 8px;
+}
+.entreprise{
+       margin-left: 200px;
+}
+.container{
+    align-items: center;
+    margin-left: 700px;
+   
+    
+   
+}
+.grid{
+      align-items: center;
+    margin: 20px;
+    display: flex;
+   flex-direction: row;
+  
+
+}
+.recher{
+    margin-left: 20px;
+     position: fixed;
+   height: 900px;
+   width: 500px;
+   border:1px solid black;
+}
+.postuler{
+    
+    background-color: #ddd; /* Green */
+  border: black solid 2px;
+  color: black;
+ padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  
+  font-size: 15px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer; 
+  width: auto;
+  margin:10px;
+  border-radius: 15px;
+  margin-left: 200px;
+ 
+}
+
+.postuler:hover {
+     border: white solid 2px;
+  background-color: gray;
+  color: white;
+}
+
+#myInput{
+    padding: 20px;
+}
+* {
+  box-sizing: border-box;
+}
+
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #ddd;
+  padding: 10px;
+  font-size: 16px;
+  color:black;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color:#ddd;
+  color: black;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+
+

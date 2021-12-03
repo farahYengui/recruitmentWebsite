@@ -1,0 +1,163 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 3, 2021, 6:11:03 PM
+    Author     : HP
+*/
+
+.form-container h3{
+    margin-bottom: 15px;
+    padding: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.info_data .data,
+.projects_data .data{
+  width: 45%;
+  margin: -190px -300px;
+}
+
+.info_data .data h4,
+.projects_data .data h4{
+    color: #353c4e;
+    margin: 20px 5px;
+}
+
+.info_data .data p,
+.projects_data .data p{
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+
+.wrapper .social_media ul{
+  display: flex;
+
+  justify-content: center;
+}
+
+.wrapper .social_media ul li{
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 45px;
+}
+
+.wrapper .social_media ul li a{
+  color :black;
+ 
+  font-size: 18px;
+}
+
+.input
+{
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.myInput{
+    padding: 15px;
+    background-color: transparent;
+    width: 300px;  
+    border-radius: 10px;
+  border:2px solid black;  
+  margin: 10px; 
+}
+
+.li{
+    width: 300px;
+}
+
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+  }
+
+  
+.slide-width
+{
+    width: 100px;
+}
+
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .p:hover, .n:hover {
+    background-color: #804000;
+  }
+
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color:  black;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+  .step{
+    display: none;
+    text-align: center;
+    color: black;
+    margin-left: 200px;
+}
+
+
+.p, .n {
+    cursor: pointer;
+    width: auto;
+    padding: 10px 15px;
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.6s ease;
+    border-radius: 10px;
+    user-select: none;
+    background-color: #80400086;
+  }
+
+ .n,.p
+  {
+    display: inline;
+  }
+
+  .step h4, .step a
+  {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
