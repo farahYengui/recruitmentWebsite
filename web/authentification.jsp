@@ -60,9 +60,9 @@
             <form action="#">
               <h1>Connexion</h1>
               <div class="social-container">
-                <a href="#" class="social"><img src="facebook.png"></a>
-                <a href="#" class="social"><img src="google.png"></a>
-                <a href="#" class="social"><img src="linkedin.png"></a>
+                <a href="#" class="social"><img src="images/facebook.png"></a>
+                <a href="#" class="social"><img src="images/google.png"></a>
+                <a href="#" class="social"><img src="images/linkedin.png"></a>
               </div>
               <span>ou bien utiliser votre compte</span>
               <input type="email" placeholder="Email" class="sign-in-input"/>
@@ -181,17 +181,12 @@
           <div class="form-container sign-in-container">
             <form action="#">
               <h1>Connexion</h1>
-              <div class="social-container">
-                <a href="#" class="social"><img src="images/facebook.png"></a>
-                <a href="#" class="social"><img src="images/google.png"></a>
-                <a href="#" class="social"><img src="images/linkedin.png"></a>
-              </div>
-              <span>ou bien utiliser votre compte</span>
+             
               <input type="email" placeholder="Email" class="sign-in-input"/>
               <input type="password" placeholder="Password" class="sign-in-input"/>
               <a href="#">Mot de passe oublié?</a>
               <button>Se connecter</button>
-
+            </form>
           </div>
           <div class="overlay-container">
             <div class="overlay">
@@ -217,7 +212,6 @@
     <div class="recher">
       <div> <img src="images/portfolio.png" id="emploi"> Emploi recherché </div>
       <br>
-      <!--Make sure the form has the autocomplete function switched off:-->
       <form class="in-form">
         <div>
           <input id="inputCountry" type="text" name="regions" placeholder="Région">

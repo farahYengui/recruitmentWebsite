@@ -10,7 +10,7 @@ and open the template in the editor.
 
 .form-container h3{
     margin-bottom: 15px;
-    padding: 5px;
+    padding: 20px;
     border-bottom: 1px solid #e0e0e0;
     color: #353c4e;
     text-transform: uppercase;
@@ -22,7 +22,8 @@ and open the template in the editor.
 .info_data .data,
 .projects_data .data{
   width: 45%;
-  margin: -190px -300px;
+  height: 250px;
+  margin: 10px -300px;
 }
 
 .info_data .data h4,
@@ -83,6 +84,7 @@ and open the template in the editor.
 /* Slideshow container */
 .slideshow-container {
     position: relative;
+    min-height: 480px;
   }
 
   
@@ -147,10 +149,6 @@ and open the template in the editor.
     border-radius: 10px;
     user-select: none;
     background-color: #80400086;
-  }
-
- .n,.p
-  {
     display: inline;
   }
 
