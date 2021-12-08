@@ -4,8 +4,13 @@
     Author     : HP
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -16,8 +21,6 @@
   <link rel="stylesheet" href="navbar.css">
   <link href="signIn.css" rel="stylesheet">
   <link href="signUpEntreprise.css" rel="stylesheet">
-  <link href="intranetCan.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
 
@@ -42,7 +45,7 @@
         <h2>TROUVEZ UNE MEILLEURE FAÇON DE TRAVAILLER</h2>
         <div class="container" id="container">
           <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="CandidatServlet" method="post">
               <h1>Inscription</h1>
               <div class="social-container">
                 <a href="#" class="social"><img src="images/facebook.png"></a>
@@ -50,14 +53,15 @@
                 <a href="#" class="social"><img src="images/linkedin.png"></a>
               </div>
               <span>ou bien utiliser votre e-mail pour créer un compte</span>
-              <input type="text" placeholder="Name" class="sign-in-input"/>
-              <input type="email" placeholder="Email" class="sign-in-input"/>
-              <input type="password" placeholder="Password" class="sign-in-input"/>
-              <button>S'inscrire</button>
+              <input type="text" placeholder="Name" class="sign-in-input" name="name"/>
+              <input type="email" placeholder="Email" class="sign-in-input" name="email"/>
+              <input type="password" placeholder="Password" class="sign-in-input" name="password"/>
+              <button type="submit"  > S'inscrire  </button>   
+              
             </form>
           </div>
           <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="loginCanServlet" method="post">
               <h1>Connexion</h1>
               <div class="social-container">
                 <a href="#" class="social"><img src="images/facebook.png"></a>
@@ -65,10 +69,10 @@
                 <a href="#" class="social"><img src="images/linkedin.png"></a>
               </div>
               <span>ou bien utiliser votre compte</span>
-              <input type="email" placeholder="Email" class="sign-in-input"/>
-              <input type="password" placeholder="Password" class="sign-in-input" />
+              <input type="email" placeholder="Email" class="sign-in-input" name="name"/>
+              <input type="password" placeholder="Password" class="sign-in-input" name="password" />
               <a href="#">Mot de passe oublié?</a>
-              <button>Se connecter</button>
+              <button type="submit">Se connecter</button>
             </form>
           </div>
           <div class="overlay-container">
@@ -97,14 +101,14 @@
             <h3>
               Créer un compte de votre entreprise
             </h3>
-            <form>
+            <form action="EntrepriseServlet" method="post">
               <div class="info_data">
                 <div class="slideshow-container slide-width">
                   <div class="step fade">
                     <div class="data">
                       <h4> &nbsp; &nbsp;Nom </h4>
                       <div class=" input ">
-                        <input class="myInput" type="text" name="myCountry" placeholder="Nom de l'entreprise">
+                        <input class="myInput" type="text" name="name" placeholder="Nom de l'entreprise">
                       </div>
                     </div>
                   </div>
@@ -112,7 +116,7 @@
                     <div class="data">
                       <h4> &nbsp; &nbsp;Local </h4>
                       <div class=" input ">
-                        <input class="myInput" type="text" name="myCountry"
+                        <input class="myInput" type="text" name="adress"
                           placeholder="Où se trouve votre entreprise?">
                       </div>
                     </div>
@@ -122,7 +126,7 @@
                       <h4> &nbsp; &nbsp;Domaine </h4>
                       <div class=" input ">
 
-                        <input class="myInput" type="text" name="domaine"
+                        <input class="myInput" type="text" name="domain"
                           placeholder="Quel est le domaine de votre entreprise?">
                       </div>
                     </div>
@@ -141,7 +145,7 @@
                     <div class="data">
                       <h4> &nbsp; &nbsp;Numéro </h4>
                       <div class=" input ">
-                        <input class="myInput" type="text" name="numero" placeholder="+216 00 000 000">
+                        <input class="myInput" type="text" name="phone" placeholder="+216 00 000 000">
                       </div>
                     </div>
                   </div>
@@ -157,8 +161,8 @@
                     <div class="data">
                       <h4> &nbsp; &nbsp;Mot de passe: </h4>
                       <div class=" input ">
-                        <input class="myInput" type="password" name="myCountry" placeholder="Saisir votre mot de Passe">
-                        <input class="myInput" type="password" name="myCountry"
+                        <input class="myInput" type="password"  placeholder="Saisir votre mot de Passe">
+                        <input class="myInput" type="password" name="password"
                           placeholder="Confirmer votre mot de Passe">
                       </div>
                     </div>
@@ -166,7 +170,7 @@
                   <div class="step fade">
                     <div class="data">
                       <h4>Votre compte a été crée avec succès.</h4>
-                      <a href="intranetEnt.jsp">Cliquez ici pour en accéder.</a>
+                      <button type="submit" style="width:300px">Cliquez ici pour en accéder.</button>
                     </div>
                   </div>
                   <a class="p" onclick="plusSlides(-1)">&#10094;</a>
@@ -208,68 +212,8 @@
       </div>
     </div>
   </div>
-  <div class="grid" id="offres">
-    <div class="recher">
-      <div> <img src="images/portfolio.png" id="emploi"> Emploi recherché </div>
-      <br>
-      <form class="in-form">
-        <div>
-          <input id="inputCountry" type="text" name="regions" placeholder="Région">
-        </div>
-        <input type="submit" value="" class="envoyer">
-      </form>
-    </div>
 
-    <div class="entrepriseContainer">
-      <div class="wrapper">
-        <div class="right">
-          <div class="info">
-            <div style="height:100px;"> </div>
-            <h3>Nom de l'entreprise</h3>
-            <div class="info_data">
-              <div>
-                <h4>Description</h4>
-                <p>nhfnthnfthhhhhhhfdtj nkslpjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjd</p>
-              </div>
-              <div>
-                <h4>Domaine</h4>
-                <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
-              </div>
-              <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
-                <img src="images/user.png" alt="" class="local"> nombre de poste
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="wrapper">
-        <div class="right">
-          <div class="info">
-            <h3>Nom de l'entreprise</h3>
-            <div class="info_data">
-              <div>
-                <h4>Description</h4>
-                <p>nhfnthnfthhhhhhhfdtj nkslpjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjd</p>
-              </div>
-              <div>
-                <h4>Domaine</h4>
-                <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
-              </div>
-              <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
-                <img src="images/user.png" alt="" class="local"> nombre de poste
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <footer>
-    Tous les droits sont réservés, 2021.
-  </footer>
-  <script src="search.js"></script>
+ 
   <script src="signIn.js"></script>
   <script src="signUpEntreprise.js"></script>
 </body>

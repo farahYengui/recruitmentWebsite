@@ -4,13 +4,8 @@
     Author     : HP
 --%>
 
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -61,7 +56,7 @@
             </form>
           </div>
           <div class="form-container sign-in-container">
-            <form action="loginCanServlet" method="post">
+            <form action="#">
               <h1>Connexion</h1>
               <div class="social-container">
                 <a href="#" class="social"><img src="images/facebook.png"></a>
@@ -69,10 +64,10 @@
                 <a href="#" class="social"><img src="images/linkedin.png"></a>
               </div>
               <span>ou bien utiliser votre compte</span>
-              <input type="email" placeholder="Email" class="sign-in-input" name="name"/>
-              <input type="password" placeholder="Password" class="sign-in-input" name="password" />
+              <input type="email" placeholder="Email" class="sign-in-input"/>
+              <input type="password" placeholder="Password" class="sign-in-input" />
               <a href="#">Mot de passe oublié?</a>
-              <button type="submit">Se connecter</button>
+              <button>Se connecter</button>
             </form>
           </div>
           <div class="overlay-container">
@@ -182,16 +177,7 @@
               </div>
             </form>
           </div>
-          <div class="form-container sign-in-container">
-            <form action="#">
-              <h1>Connexion</h1>
-             
-              <input type="email" placeholder="Email" class="sign-in-input"/>
-              <input type="password" placeholder="Password" class="sign-in-input"/>
-              <a href="#">Mot de passe oublié?</a>
-              <button>Se connecter</button>
-            </form>
-          </div>
+         
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-panel overlay-left">

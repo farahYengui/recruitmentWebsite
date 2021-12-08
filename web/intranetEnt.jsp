@@ -4,7 +4,12 @@
     Author     : HP
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -34,16 +39,11 @@
   <div class="wrapper">
     <div class="left">
       <img src="images/account.png" alt="user" width="128">
-      <h4>nom entreprise</h4>
-      <h4>local </h4>
-      <h4>domaine</h4>
-      <div class="social_media">
-        <ul>
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-      </div>
+     
+      <h4>${name}</h4>
+      <h4> ${domain}</h4>
+      <h4> ${adress}</h4>
+    
     </div>
     <div class="right">
       <div class="info">
@@ -53,8 +53,9 @@
             <h4> &nbsp; &nbsp;Nom </h4>
             <form>
               <div class=" input ">
+                
 
-                <input class="myInput" type="text" name="myCountry" placeholder="Nom">
+                <input class="myInput" type="text" name="name" placeholder="Nom" disabled="disabled" value= "${name}">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -67,7 +68,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="text" name="myCountry" placeholder="Local">
+                <input class="myInput" type="text" name="adress" placeholder="Local" disabled="disabled" value= "${adress}">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -81,7 +82,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="text" name="myCountry" placeholder="Domaine">
+                <input class="myInput" type="text" name="domain" placeholder="Domaine" disabled="disabled" value= "${domain}">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -94,7 +95,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="text" name="myCountry" placeholder="Description">
+                <input class="myInput" type="text" name="description" placeholder="Description" disabled="disabled" value= "${description}">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -108,7 +109,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="number" name="myCountry" placeholder="numéro">
+                <input class="myInput" type="text" name="phone" placeholder="numéro" disabled="disabled" value= "${phone}">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -122,7 +123,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="email" name="myCountry" placeholder="Email">
+                <input class="myInput" type="email" name="email" placeholder="Email" disabled="disabled" value= "${email}">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -146,16 +147,42 @@
         <h3>Postes disponibles</h3>
         <div class="projects_data">
           <div class="dat">
+<% 
+  try
+       {
 
-            <h4> developpeur java</h4> <a href="#"><img src="images/remove.png"> </a>
-            <h4> developpeur java</h4> <a href="#"><img src="images/remove.png"> </a>
+     Class.forName("com.mysql.jdbc.Driver");// charger le driver
+
+     Connection con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost/recruitment_db", "root", "");
+
+/***************************/
+PreparedStatement pstmt = (PreparedStatement) con.prepareStatement("SELECT post from poste");
 
 
-            <form>
-              <input class="ajouter" type="text" name="ajouter" placeholder="Ajouter poste">
+ResultSet rs= pstmt.executeQuery(); // retourne une table rs
+
+while(rs.next()){
+    %>
+  <h4> <% rs.getString("post") ; %></h4> <a href="#"><img src="images/remove.png"> </a>
+  <% }
+       }catch(Exception exp)
+       {
+    
+
+       }
+
+%>
+          
+            
+
+            <form action="PosteServlet" method="post" >
+             
+                 <input type="hidden" name="name" value="${name}">
+                
+              <input class="ajouter" type="text" name="post" placeholder="Ajouter poste">
+            
+            <button type="submit"> <img src="images/add.png"></button>
             </form>
-            <a href=""> <img src="images/add.png"></a>
-
 
 
 

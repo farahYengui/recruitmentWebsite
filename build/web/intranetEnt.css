@@ -92,15 +92,15 @@ and open the template in the editor.
   }
 
   .wrapper .social_media ul {
+      padding-left: -2000px;
     display: flex;
 
     justify-content: center;
   }
 
   .wrapper .social_media ul li {
-    width: 45px;
-    height: 45px;
-    margin-right: 10px;
+    width: 30px;
+  
     border-radius: 5px;
     text-align: center;
     line-height: 45px;

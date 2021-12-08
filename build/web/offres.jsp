@@ -1,39 +1,36 @@
 <%-- 
-    Document   : intranetCan
-    Created on : Dec 3, 2021, 6:00:56 PM
+    Document   : offres.jsp
+    Created on : Dec 6, 2021, 2:08:03 PM
     Author     : HP
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
-
-<head>
-  <title>Candidat</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="navbar.css" rel="stylesheet">
-  <link href="intranetCan.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
-
-</head>
-
-<body>
-  <nav>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+         <link href="intranetCan.css" rel="stylesheet">
+   
+  <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>      
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="navbar.css">
+    </head>
+    <body>
+         <nav>
     <ul>
       <div><a class="logo" href="#">Carriere</a>
         <p>Mettons-nous au travail</p>
       </div>
-      <li><a href="javascript:disconnect();">Déconnexion</a></li>
+      <li><a href="#connexion">Connexion</a></li>
+      <li><a href="#offres">Offres</a></li>
     </ul>
   </nav>
   <div class="nav-margin"></div>
-  <div class="grid">
+          <div class="grid" id="offres">
     <div class="recher">
       <div> <img src="images/portfolio.png" id="emploi"> Emploi recherché </div>
       <br>
-      <!--Make sure the form has the autocomplete function switched off:-->
       <form class="in-form">
         <div>
           <input id="inputCountry" type="text" name="regions" placeholder="Région">
@@ -43,11 +40,10 @@
     </div>
 
     <div class="entrepriseContainer">
-      <h1 style="text-align: center;">Bonjour ${name}! Vous pouvez maintenant postuler votre CV pour n'importe quel
-        emploi.</h1>
       <div class="wrapper">
         <div class="right">
           <div class="info">
+            <div style="height:100px;"> </div>
             <h3>Nom de l'entreprise</h3>
             <div class="info_data">
               <div>
@@ -58,12 +54,8 @@
                 <h4>Domaine</h4>
                 <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
               </div>
-
               <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
                 <img src="images/user.png" alt="" class="local"> nombre de poste
-              </div>
-              <div>
-                <button class="postuler">Postuler maintenant </button>
               </div>
             </div>
           </div>
@@ -83,31 +75,19 @@
                 <h4>Domaine</h4>
                 <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
               </div>
-
               <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
                 <img src="images/user.png" alt="" class="local"> nombre de poste
-              </div>
-              <div>
-                <button class="postuler">Postuler maintenant </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
 
     </div>
   </div>
-
-
-  <script src="search.js"></script>
-  <script src="script.js"></script>
-  <script src="disconnect.js"></script>
-
-</body>
-
+  <footer>
+    Tous les droits sont réservés, 2021.
+  </footer>
+     <script src="search.js"></script>
+    </body>
 </html>

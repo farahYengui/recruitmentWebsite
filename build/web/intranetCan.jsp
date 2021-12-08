@@ -43,7 +43,7 @@
     </div>
 
     <div class="entrepriseContainer">
-      <h1 style="text-align: center;">Bonjour "Candidat"! Vous pouvez maintenant postuler votre CV pour n'importe quel
+      <h1 style="text-align: center;">Bonjour ${name}! Vous pouvez maintenant postuler votre CV pour n'importe quel
         emploi.</h1>
       <div class="wrapper">
         <div class="right">
