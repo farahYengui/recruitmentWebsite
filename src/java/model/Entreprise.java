@@ -8,6 +8,7 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Entreprise {
        
          Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
 
-         Connection con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db", "root", "");
+         Connection con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
 
          /**requete insertion**/
 
@@ -51,5 +52,6 @@ res = "erreur !!!";
           return res;         
     }
     
-    }
+        
+}
 

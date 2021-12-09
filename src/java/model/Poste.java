@@ -20,24 +20,18 @@ public class Poste {
            try
       {  /**CONNEXION BDD**/
         
-       out.print("1");
          Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
 
-         Connection con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db", "root", "");
-out.print("2");
+         Connection con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
+
          /**requete insertion**/
 
          PreparedStatement pstmt1 = (PreparedStatement) con.prepareStatement("insert into poste (post,entreprise) values (?,?)");
 
          pstmt1.setString(1,post);
          pstmt1.setString(2,entreprise);
-     out.print("3");   
-         
-       
-         
          int resultat = pstmt1.executeUpdate();
-         out.print("4");
-res = "Votre ajout est effectué avec succes";
+         res = "Votre ajout est effectué avec succes";
 
 
 

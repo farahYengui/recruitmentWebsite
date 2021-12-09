@@ -81,7 +81,7 @@ public class loginCanServlet extends HttpServlet {
 {
 	Class.forName("com.mysql.jdbc.Driver"); //load driver
 	
-	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db","root",""); //create connection
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC","root",""); //create connection
 	{
 		
 		

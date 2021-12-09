@@ -105,7 +105,6 @@
 
 
   <script src="search.js"></script>
-  <script src="script.js"></script>
   <script src="disconnect.js"></script>
 
 </body>

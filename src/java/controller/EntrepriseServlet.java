@@ -83,14 +83,16 @@ public class EntrepriseServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        request.setAttribute("name", name);
+        
+        request.setAttribute("email", email);
+      /*  request.setAttribute("name", name);
         request.setAttribute("adress", adress);
         request.setAttribute("domain", domain);
         request.setAttribute("description", description);
         request.setAttribute("phone", phone);
-        request.setAttribute("email", email);
         request.setAttribute("password", password);
-      /*  List myliste= new ArrayList();
+        */
+      /* List myliste= new ArrayList();
         myliste.add("name");
         myliste.add("adress");
         myliste.add("domain");
@@ -112,7 +114,7 @@ public class EntrepriseServlet extends HttpServlet {
     Entreprise instance = new Entreprise();
     String res= instance.inscrireEnt(name,adress,domain,description,phone,email,password);
    // request.setAttribute("enveloppe", myliste);
-    request.getRequestDispatcher( "intranetEnt.jsp").forward( request, response );
+   request.getRequestDispatcher( "intranetEnt.jsp").forward( request, response );
         processRequest(request, response);
     }
 

@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/RYZEN7/Documents/NetBeansProjects/RecruitmentWebsite/src/java/controller/loginCanServlet.java</file>
-            <file>file:/C:/Users/RYZEN7/Documents/NetBeansProjects/RecruitmentWebsite/web/intranetEnt.jsp</file>
-            <file>file:/C:/Users/RYZEN7/Documents/NetBeansProjects/RecruitmentWebsite/src/java/model/Candidat.java</file>
-            <file>file:/C:/Users/RYZEN7/Documents/NetBeansProjects/RecruitmentWebsite/web/authentification.jsp</file>
-            <file>file:/C:/Users/RYZEN7/Documents/NetBeansProjects/RecruitmentWebsite/src/java/model/Poste.java</file>
-            <file>file:/C:/Users/RYZEN7/Documents/NetBeansProjects/RecruitmentWebsite/src/java/controller/CandidatServlet.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/RecruitmentWebsite/src/java/model/Poste.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/RecruitmentWebsite/src/java/controller/PosteServlet.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/RecruitmentWebsite/web/intranetEnt.jsp</file>
         </group>
     </open-files>
 </project-private>

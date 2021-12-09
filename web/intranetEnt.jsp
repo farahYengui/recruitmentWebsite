@@ -4,6 +4,8 @@
     Author     : HP
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -22,7 +24,59 @@
   <title>Compte de l'entreprise</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 </head>
+     <%
+         String name = "";
+        String adress = "";
+        String domain = "";
+        String description = "";
+        String phone = "";
+        String email = "";
+           try
+      {  /**CONNEXION BDD**/
+          
+         Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
 
+         Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
+
+         PreparedStatement pstmt1 = con.prepareStatement("select * from entreprise where email=?");
+
+         pstmt1.setString(1,request.getParameter("email")); 
+         
+            ResultSet rs = pstmt1.executeQuery();
+       if (rs.next()){
+        name = rs.getString("name"); 
+        adress = rs.getString("adress");
+        domain = rs.getString("domain");
+        description = rs.getString("description");
+        phone = rs.getString("phone");
+        email = rs.getString("email");
+ } 
+}catch( Exception exp)
+       {
+System.out.println (exp.getMessage());
+       }
+  %>
+  <%
+      List <String> listPost = new ArrayList<String>();
+          try
+      {  /**CONNEXION BDD**/
+          
+         Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
+
+         Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
+         
+PreparedStatement pstmt = (PreparedStatement) con.prepareStatement("SELECT post from poste");
+ResultSet rslt= pstmt.executeQuery(); // retourne une table rs
+
+while(rslt.next()){
+    listPost.add(rslt.getString("post"));
+      }
+      }catch( Exception exp)
+       {
+System.out.println (exp.getMessage());
+       }
+  
+%>
 <body>
   <nav>
     <ul>
@@ -36,14 +90,15 @@
   </nav>
   <div class="nav-margin"></div> 
 
+
   <div class="wrapper">
     <div class="left">
       <img src="images/account.png" alt="user" width="128">
-     
-      <h4>${name}</h4>
-      <h4> ${domain}</h4>
-      <h4> ${adress}</h4>
-    
+
+      <h4><%= name %></h4>
+      <h4> <%= domain%> </h4>
+      <h4> <%= adress %></h4>
+ 
     </div>
     <div class="right">
       <div class="info">
@@ -55,7 +110,7 @@
               <div class=" input ">
                 
 
-                <input class="myInput" type="text" name="name" placeholder="Nom" disabled="disabled" value= "${name}">
+                <input class="myInput" type="text" name="name" placeholder="Nom" disabled="disabled" value= "<%= name %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -68,7 +123,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="text" name="adress" placeholder="Local" disabled="disabled" value= "${adress}">
+                <input class="myInput" type="text" name="adress" placeholder="Local" disabled="disabled" value= "<%= adress %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -82,7 +137,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="text" name="domain" placeholder="Domaine" disabled="disabled" value= "${domain}">
+                <input class="myInput" type="text" name="domain" placeholder="Domaine" disabled="disabled" value= "<%= domain %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -95,7 +150,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="text" name="description" placeholder="Description" disabled="disabled" value= "${description}">
+                <input class="myInput" type="text" name="description" placeholder="Description" disabled="disabled" value= "<%= description %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -109,7 +164,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="text" name="phone" placeholder="numéro" disabled="disabled" value= "${phone}">
+                <input class="myInput" type="text" name="phone" placeholder="numéro" disabled="disabled" value= "<%= phone %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -123,7 +178,7 @@
             <form>
               <div class=" input ">
 
-                <input class="myInput" type="email" name="email" placeholder="Email" disabled="disabled" value= "${email}">
+                <input class="myInput" type="email" name="email" placeholder="Email" disabled="disabled" value= "<%= email %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -132,67 +187,30 @@
 
           </div>
 
-
-
-
-
-
-
-
-
         </div>
+  
       </div>
 
       <div class="projects">
         <h3>Postes disponibles</h3>
         <div class="projects_data">
           <div class="dat">
-<% 
-  try
-       {
-
-     Class.forName("com.mysql.jdbc.Driver");// charger le driver
-
-     Connection con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost/recruitment_db", "root", "");
-
-/***************************/
-PreparedStatement pstmt = (PreparedStatement) con.prepareStatement("SELECT post from poste");
-
-
-ResultSet rs= pstmt.executeQuery(); // retourne une table rs
-
-while(rs.next()){
-    %>
-  <h4> <% rs.getString("post") ; %></h4> <a href="#"><img src="images/remove.png"> </a>
-  <% }
-       }catch(Exception exp)
-       {
-    
-
-       }
-
-%>
+<% for(int i=0;i<listPost.size();i++){ %>
+        <h4> <%= listPost.get(i) %> </h4> <a href="#"><img src="images/remove.png"> </a>
+<% }%>
           
-            
-
-            <form action="PosteServlet" method="post" >
-             
-                 <input type="hidden" name="name" value="${name}">
-                
+            <form action="PosteServlet" method="post" >    
               <input class="ajouter" type="text" name="post" placeholder="Ajouter poste">
             
             <button type="submit"> <img src="images/add.png"></button>
             </form>
-
-
-
-
           </div>
         </div>
 
 
       </div>
     </div>
+  </div>
 <script src="disconnect.js"></script>
 </body>
 

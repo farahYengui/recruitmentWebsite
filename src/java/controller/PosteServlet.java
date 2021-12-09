@@ -74,26 +74,11 @@ public class PosteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String post = request.getParameter("post"); 
-        String name = request.getParameter("name");
-        String domain = request.getParameter("domain");
-        String adress = request.getParameter("adress");
         String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String description = request.getParameter("description");
-        
-         request.setAttribute("name", name);
-          request.setAttribute("domain", domain);
-           request.setAttribute("adress", adress);
-           request.setAttribute("email", email);
-           request.setAttribute("phone", phone);
-           request.setAttribute("description", description);
-         out.println("1");
-         // 2- Envoyer les données à un EJB
     Poste instance = new Poste();
-    String res= instance.postulation(post,name);
-    out.println("2");
+    String res= instance.postulation(post,email);
          request.getRequestDispatcher( "intranetEnt.jsp").forward( request, response );
-    out.println("3");
+   
         processRequest(request, response);
     }
 
