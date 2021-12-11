@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Entreprise;
 
 
@@ -76,44 +77,19 @@ public class EntrepriseServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          String name = request.getParameter("name"); 
+         String name = request.getParameter("name"); 
         String adress = request.getParameter("adress");
         String domain = request.getParameter("domain");
         String description = request.getParameter("description");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        request.setAttribute("email", email);
-      /*  request.setAttribute("name", name);
-        request.setAttribute("adress", adress);
-        request.setAttribute("domain", domain);
-        request.setAttribute("description", description);
-        request.setAttribute("phone", phone);
-        request.setAttribute("password", password);
-        */
-      /* List myliste= new ArrayList();
-        myliste.add("name");
-        myliste.add("adress");
-        myliste.add("domain");
-        myliste.add("description");
-        myliste.add("phone");
-        myliste.add("email");
-        myliste.add("password");
-      
-       
-        tab[0]=name;
-        tab[1]=adress;
-        tab[2]=domain;
-        tab[3]=description;
-        tab[4]=phone;
-        tab[5]=email;
-        tab[6]=password;*/
-         
-         // 2- Envoyer les données à un EJB
-    Entreprise instance = new Entreprise();
+        HttpSession session = request.getSession(true);
+        session.setAttribute("email", email);
+
+   Entreprise instance = new Entreprise();
     String res= instance.inscrireEnt(name,adress,domain,description,phone,email,password);
-   // request.setAttribute("enveloppe", myliste);
+
    request.getRequestDispatcher( "intranetEnt.jsp").forward( request, response );
         processRequest(request, response);
     }

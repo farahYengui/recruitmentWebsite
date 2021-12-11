@@ -51,16 +51,16 @@
             <h3>Nom de l'entreprise</h3>
             <div class="info_data">
               <div>
-                <h4>Description</h4>
                 <p>nhfnthnfthhhhhhhfdtj nkslpjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjd</p>
               </div>
               <div>
-                <h4>Domaine</h4>
+                <h4>Poste</h4>
                 <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
               </div>
 
               <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
-                <img src="images/user.png" alt="" class="local"> nombre de poste
+                <img src="images/domain.png" alt="" class="local"> domain &nbsp; &nbsp;
+                <img src="images/call.png" alt="" class="local"> phone &nbsp; &nbsp;
               </div>
               <div>
                 <button class="postuler">Postuler maintenant </button>
@@ -76,16 +76,16 @@
             <h3>Nom de l'entreprise</h3>
             <div class="info_data">
               <div>
-                <h4>Description</h4>
                 <p>nhfnthnfthhhhhhhfdtj nkslpjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjd</p>
               </div>
               <div>
-                <h4>Domaine</h4>
+                <h4>Poste</h4>
                 <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
               </div>
 
               <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
-                <img src="images/user.png" alt="" class="local"> nombre de poste
+                <img src="images/domain.png" alt="" class="local"> domain &nbsp; &nbsp;
+                <img src="images/call.png" alt="" class="local"> phone &nbsp; &nbsp;
               </div>
               <div>
                 <button class="postuler">Postuler maintenant </button>

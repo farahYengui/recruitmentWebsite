@@ -76,54 +76,41 @@ public class loginCanServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session=request.getSession();
+        HttpSession session=request.getSession(true);
+        String passworddb="";
+        String name ="";
         try
 {
 	Class.forName("com.mysql.jdbc.Driver"); //load driver
 	
 	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC","root",""); //create connection
 	{
-		
-		
-		
-                String name = request.getParameter("name"); 
-                String email = request.getParameter("email"); 
-                String password = request.getParameter("password");
-                
-		
-		PreparedStatement pstmt=null; //create statement
-		
-		pstmt=con.prepareStatement("select * from candidat where email=? "); //sql select query 
-		pstmt.setString(1,email);
-	
-		
-		ResultSet rs=pstmt.executeQuery(); //execute query and store in resultset object rs.
-		out.print("0");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password"); 
+         System.out.println(email);
+        System.out.println(password);
+		PreparedStatement pstmt=con.prepareStatement("select * from candidat where email=? ");
+		pstmt.setString(1,email);		
+		ResultSet rs=pstmt.executeQuery(); 
 		while(rs.next())
 		{
-                    out.print("00");
-		String	namedb =rs.getString("name");
-                  String      emaildb=rs.getString("email");
-		String	passworddb=rs.getString("password");
-                        	out.print("1");
+		name =rs.getString("name");
+		passworddb=rs.getString("password");
+                System.out.println(passworddb);
+                System.out.println(passworddb);
+                }
 			if(password.equals(passworddb))
 			{
-				out.print("2");
-                                session.setAttribute("name" ,name );
+                                session.setAttribute("name" ,name);
                                 session.setAttribute("email" , email);
-                                session.setAttribute("password" , passworddb);
-                             //   response.sendRedirect("intranetCan.jsp");
-				 // request.getRequestDispatcher( "intranetCan.jsp").forward( request, response );
-			}
-		}
-                request.getRequestDispatcher( "intranetCan.jsp").forward( request, response );
-		/*else
-		{
-                    out.print("3");
-			request.setAttribute("errorMsg","invalid email or password"); //invalid error message for email or password wrong
-		}
-		out.print("4");*/
-		con.close(); //close connection	
+                                request.getRequestDispatcher( "intranetCan.jsp").forward( request, response );
+                             }
+                        else
+                        {
+                            request.getRequestDispatcher( "authentification.jsp").forward( request, response );
+                        }
+                
+		con.close();	
 	}
 	
 }

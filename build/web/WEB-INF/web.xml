@@ -16,6 +16,22 @@
         <servlet-name>loginCanServlet</servlet-name>
         <servlet-class>controller.loginCanServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EntServlet</servlet-name>
+        <servlet-class>controller.EntServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficheEntServlet</servlet-name>
+        <servlet-class>controller.AfficheEntServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginEntServlet</servlet-name>
+        <servlet-class>LoginEntServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AffichePostServlet</servlet-name>
+        <servlet-class>controller.AffichePostServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PosteServlet</servlet-name>
         <url-pattern>/PosteServlet</url-pattern>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>loginCanServlet</servlet-name>
         <url-pattern>/loginCanServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EntServlet</servlet-name>
+        <url-pattern>/EntServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficheEntServlet</servlet-name>
+        <url-pattern>/AfficheEntServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginEntServlet</servlet-name>
+        <url-pattern>/LoginEntServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AffichePostServlet</servlet-name>
+        <url-pattern>/AffichePostServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

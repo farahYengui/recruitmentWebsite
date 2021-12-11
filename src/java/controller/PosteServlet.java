@@ -8,6 +8,9 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -73,12 +76,27 @@ public class PosteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String post = request.getParameter("post"); 
-        String email = request.getParameter("email");
-    Poste instance = new Poste();
-    String res= instance.postulation(post,email);
+        try
+      {  /**CONNEXION BDD**/
+          
+         Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
+
+         Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
+ String name = request.getParameter("name"); 
+String job = request.getParameter("post"); 
+String email = request.getParameter("email"); 
+PreparedStatement pstmt2 = (PreparedStatement) con.prepareStatement("insert into poste (post,entreprise,email) values (?,?,?)");
+
+         pstmt2.setString(1,job);
+         pstmt2.setString(2,name);
+         pstmt2.setString(3,email);
+         int resultat = pstmt2.executeUpdate();
+
+  }catch( Exception exp)
+       {
+System.out.println (exp.getMessage());
+       } 
          request.getRequestDispatcher( "intranetEnt.jsp").forward( request, response );
-   
         processRequest(request, response);
     }
 

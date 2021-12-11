@@ -69,7 +69,7 @@
                 <a href="#" class="social"><img src="images/linkedin.png"></a>
               </div>
               <span>ou bien utiliser votre compte</span>
-              <input type="email" placeholder="Email" class="sign-in-input" name="name"/>
+              <input type="email" placeholder="Email" class="sign-in-input" name="email"/>
               <input type="password" placeholder="Password" class="sign-in-input" name="password" />
               <a href="#">Mot de passe oublié?</a>
               <button type="submit">Se connecter</button>
@@ -183,11 +183,11 @@
             </form>
           </div>
           <div class="form-container sign-in-container">
-            <form action="#">
+              <form action="LoginEntServlet" method="post">
               <h1>Connexion</h1>
              
-              <input type="email" placeholder="Email" class="sign-in-input"/>
-              <input type="password" placeholder="Password" class="sign-in-input"/>
+              <input type="email" placeholder="Email" class="sign-in-input" name="email"/>
+              <input type="password" placeholder="Password" class="sign-in-input" name="password"/>
               <a href="#">Mot de passe oublié?</a>
               <button>Se connecter</button>
             </form>

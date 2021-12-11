@@ -30,17 +30,15 @@
         String domain = "";
         String description = "";
         String phone = "";
-        String email = "";
+        String email = session.getAttribute("email").toString();
+      
+        List <String> listPost = new ArrayList<String>();
            try
-      {  /**CONNEXION BDD**/
-          
-         Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
-
+      {       
+         Class.forName("com.mysql.jdbc.Driver");
          Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
-
          PreparedStatement pstmt1 = con.prepareStatement("select * from entreprise where email=?");
-
-         pstmt1.setString(1,request.getParameter("email")); 
+         pstmt1.setString(1,email); 
          
             ResultSet rs = pstmt1.executeQuery();
        if (rs.next()){
@@ -49,34 +47,22 @@
         domain = rs.getString("domain");
         description = rs.getString("description");
         phone = rs.getString("phone");
-        email = rs.getString("email");
  } 
-}catch( Exception exp)
-       {
-System.out.println (exp.getMessage());
-       }
-  %>
-  <%
-      List <String> listPost = new ArrayList<String>();
-          try
-      {  /**CONNEXION BDD**/
-          
-         Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
-
-         Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
-         
-PreparedStatement pstmt = (PreparedStatement) con.prepareStatement("SELECT post from poste");
-ResultSet rslt= pstmt.executeQuery(); // retourne une table rs
-
+PreparedStatement pstmt = (PreparedStatement) con.prepareStatement("SELECT post from poste where email=?");
+pstmt.setString(1,email); 
+ResultSet rslt= pstmt.executeQuery();
 while(rslt.next()){
     listPost.add(rslt.getString("post"));
       }
+
       }catch( Exception exp)
        {
 System.out.println (exp.getMessage());
        }
-  
+
+
 %>
+
 <body>
   <nav>
     <ul>
@@ -199,7 +185,9 @@ System.out.println (exp.getMessage());
         <h4> <%= listPost.get(i) %> </h4> <a href="#"><img src="images/remove.png"> </a>
 <% }%>
           
-            <form action="PosteServlet" method="post" >    
+            <form action="PosteServlet" method="post" >
+                <input class="ajouter" type="text" name="name" value="<%= name %>" hidden="hidden">
+                <input class="ajouter" type="text" name="email" value="<%= email %>" hidden="hidden"> 
               <input class="ajouter" type="text" name="post" placeholder="Ajouter poste">
             
             <button type="submit"> <img src="images/add.png"></button>
