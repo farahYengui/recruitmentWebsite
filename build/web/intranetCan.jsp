@@ -4,10 +4,57 @@
     Author     : HP
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
+ <%
+        String adress = "";
+        String domain = "";
+        String description = "";
+        String phone = "";
+        String email = "";
+      
+        List <String> listPost = new ArrayList<String>();
+        List <String> listName = new ArrayList<String>();
+        
+           try
+      {       
+         Class.forName("com.mysql.jdbc.Driver");
+         Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
+         PreparedStatement pstmt = (PreparedStatement) con.prepareStatement(
+                 "SELECT poste.post, poste.entreprise, poste.email, entreprise.adress, entreprise.domain, entreprise.phone, entreprise.description  FROM poste,entreprise WHERE poste.email = entreprise.email");
+ResultSet rslt= pstmt.executeQuery();
+while(rslt.next()){
+    listPost.add(rslt.getString("post"));
+      }
+
+         
+         PreparedStatement pstmt1 = con.prepareStatement("select * from entreprise where email=?");
+         pstmt1.setString(1,email); 
+         
+            ResultSet rs = pstmt1.executeQuery();
+       if (rs.next()){
+        name = rs.getString("name"); 
+        adress = rs.getString("adress");
+        domain = rs.getString("domain");
+        description = rs.getString("description");
+        phone = rs.getString("phone");
+ } 
+
+      }catch( Exception exp)
+       {
+System.out.println (exp.getMessage());
+       }
+
+
+%>
 
 <head>
   <title>Candidat</title>

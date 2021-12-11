@@ -76,63 +76,7 @@ public class AffichePostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          String name = "";
-        String adress = "";
-        String domain = "";
-        String description = "";
-        String phone = "";
-        String email = "";
-        String job = "";
-      
-        List <String> listPost = new ArrayList<String>();
-           try
-      {  /**CONNEXION BDD**/
-          
-         Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
-
-         Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
-
-         PreparedStatement pstmt1 = con.prepareStatement("select * from entreprise where email=?");
-
-         pstmt1.setString(1,"f@g.com"); 
          
-            ResultSet rs = pstmt1.executeQuery();
-       if (rs.next()){
-        name = rs.getString("name"); 
-        adress = rs.getString("adress");
-        domain = rs.getString("domain");
-        description = rs.getString("description");
-        phone = rs.getString("phone");
-        email = rs.getString("email");
-        System.out.print(email);
- } 
-        
-PreparedStatement pstmt = (PreparedStatement) con.prepareStatement("SELECT post from poste");
-ResultSet rslt= pstmt.executeQuery(); // retourne une table rs
-
-while(rslt.next()){
-    listPost.add(rslt.getString("post"));
-    System.out.print(rslt.getString("post"));
-      }
-
-
-/*PreparedStatement pstmt2 = (PreparedStatement) con.prepareStatement("insert into poste (post,entreprise) values (?,?)");
-
-         pstmt2.setString(1,job);
-         pstmt2.setString(2,name);
-         int resultat = pstmt2.executeUpdate();*/
- }catch( Exception exp)
-       {
-System.out.println (exp.getMessage());
-       }
-        request.setAttribute("name", name);
-        request.setAttribute("adress", adress);
-        request.setAttribute("domain", domain);
-        request.setAttribute("description", description);
-        request.setAttribute("phone", phone);
-        request.setAttribute("phone", email);
-        request.setAttribute("listPost", listPost);
-        request.getRequestDispatcher( "intranetEnt").forward( request, response );  
         processRequest(request, response);
     }
 
