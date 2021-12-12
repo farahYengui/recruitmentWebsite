@@ -15,38 +15,29 @@
 
 <html>
  <%
-        String adress = "";
-        String domain = "";
-        String description = "";
-        String phone = "";
-        String email = "";
-      
         List <String> listPost = new ArrayList<String>();
         List <String> listName = new ArrayList<String>();
-        
+        List <String> listEmail = new ArrayList<String>();
+        List <String> listAdress = new ArrayList<String>();
+         List <String> listDomain = new ArrayList<String>();
+        List <String> listPhone = new ArrayList<String>();
+         List <String> listDescription = new ArrayList<String>();
            try
       {       
          Class.forName("com.mysql.jdbc.Driver");
          Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
          PreparedStatement pstmt = (PreparedStatement) con.prepareStatement(
-                 "SELECT poste.post, poste.entreprise, poste.email, entreprise.adress, entreprise.domain, entreprise.phone, entreprise.description  FROM poste,entreprise WHERE poste.email = entreprise.email");
+                 "SELECT poste.post, poste.email, entreprise.name, entreprise.adress, entreprise.domain, entreprise.phone, entreprise.description  FROM poste,entreprise WHERE poste.email = entreprise.email");
 ResultSet rslt= pstmt.executeQuery();
 while(rslt.next()){
-    listPost.add(rslt.getString("post"));
+    listPost.add(rslt.getString("poste.post"));
+    listName.add(rslt.getString("entreprise.name"));
+    listEmail.add(rslt.getString("poste.email"));
+    listAdress.add(rslt.getString("entreprise.adress"));
+    listDomain.add(rslt.getString("entreprise.domain"));
+    listPhone.add(rslt.getString("entreprise.phone"));
+    listDescription.add(rslt.getString("entreprise.description"));
       }
-
-         
-         PreparedStatement pstmt1 = con.prepareStatement("select * from entreprise where email=?");
-         pstmt1.setString(1,email); 
-         
-            ResultSet rs = pstmt1.executeQuery();
-       if (rs.next()){
-        name = rs.getString("name"); 
-        adress = rs.getString("adress");
-        domain = rs.getString("domain");
-        description = rs.getString("description");
-        phone = rs.getString("phone");
- } 
 
       }catch( Exception exp)
        {
@@ -92,67 +83,61 @@ System.out.println (exp.getMessage());
     <div class="entrepriseContainer">
       <h1 style="text-align: center;">Bonjour ${name}! Vous pouvez maintenant postuler votre CV pour n'importe quel
         emploi.</h1>
+        
+        <% for(int i=0;i<listPost.size();i++){ %>     
       <div class="wrapper">
         <div class="right">
           <div class="info">
-            <h3>Nom de l'entreprise</h3>
+            <h3><%= listName.get(i) %></h3>
             <div class="info_data">
               <div>
-                <p>nhfnthnfthhhhhhhfdtj nkslpjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjd</p>
+                <p><%= listDescription.get(i) %></p>
               </div>
               <div>
                 <h4>Poste</h4>
-                <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
+                <p><%= listPost.get(i) %></p>
               </div>
 
-              <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
-                <img src="images/domain.png" alt="" class="local"> domain &nbsp; &nbsp;
-                <img src="images/call.png" alt="" class="local"> phone &nbsp; &nbsp;
+              <div> <img src="images/location.png" alt="" class="local"> <%= listAdress.get(i) %> &nbsp; &nbsp;
+                <img src="images/domain.png" alt="" class="local"> <%= listDomain.get(i) %> &nbsp; &nbsp;
+                <img src="images/call.png" alt="" class="local"> <%= listPhone.get(i) %> &nbsp; &nbsp;
               </div>
               <div>
-                <button class="postuler">Postuler maintenant </button>
+                  <form method="post" action="FileUpload" enctype="multipart/form-data" >
+                      <label for="file" id ="fileLabel" class="postuler"> Ajouter un CV</label>
+                      <input type="file" name="file" id="file" onchange="pressed()"/>
+                      <input type="submit" value="Postuler maintenant" name="upload" id="upload" class="postuler" />
+                      <label class="message">${message}</label>
+                      <input type="text" value="<%= listPost.get(i) %>" name="poste" hidden="hidden" />
+                      <input type="text" value="<%= listEmail.get(i) %>" name="email" hidden="hidden"/>
+                  </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="wrapper">
-        <div class="right">
-          <div class="info">
-            <h3>Nom de l'entreprise</h3>
-            <div class="info_data">
-              <div>
-                <p>nhfnthnfthhhhhhhfdtj nkslpjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjd</p>
-              </div>
-              <div>
-                <h4>Poste</h4>
-                <p>inforthhhhhhhhhhhhhhhhhhhhhhhhh</p>
-              </div>
-
-              <div> <img src="images/location.png" alt="" class="local"> localisation &nbsp; &nbsp;
-                <img src="images/domain.png" alt="" class="local"> domain &nbsp; &nbsp;
-                <img src="images/call.png" alt="" class="local"> phone &nbsp; &nbsp;
-              </div>
-              <div>
-                <button class="postuler">Postuler maintenant </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
+<% }%>
     </div>
   </div>
 
 
   <script src="search.js"></script>
   <script src="disconnect.js"></script>
+  <script>
+      window.pressed = function(){
+    var file = document.getElementById('file');
+    var fileLabel = document.getElementById('fileLabel');
+    if(file.value == "")
+    {
+        fileLabel.innerHTML = "Ajouter un CV";
+    }
+    else
+    {
+        var theSplit = file.value.split('\\');
+        fileLabel.innerHTML = theSplit[theSplit.length-1];
+    }
+};
+  </script>
 
 </body>
 

@@ -32,6 +32,18 @@
         <servlet-name>AffichePostServlet</servlet-name>
         <servlet-class>controller.AffichePostServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FileUploadPdf</servlet-name>
+        <servlet-class>FileUploadPdf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FileUpload</servlet-name>
+        <servlet-class>controller.FileUpload</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FileDownload</servlet-name>
+        <servlet-class>controller.FileDownload</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PosteServlet</servlet-name>
         <url-pattern>/PosteServlet</url-pattern>
@@ -63,6 +75,18 @@
     <servlet-mapping>
         <servlet-name>AffichePostServlet</servlet-name>
         <url-pattern>/AffichePostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FileUploadPdf</servlet-name>
+        <url-pattern>/FileUploadPdf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FileUpload</servlet-name>
+        <url-pattern>/FileUpload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FileDownload</servlet-name>
+        <url-pattern>/FileDownload</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

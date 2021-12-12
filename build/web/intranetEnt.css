@@ -162,7 +162,7 @@ and open the template in the editor.
 
   .dat {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-gap: 20px;
 
@@ -328,6 +328,11 @@ input[type=submit] {
 .autocomplete-active {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
+}
+.inline-post
+{
+    display: flex;
+    flex-direction: row;
 }
 
 

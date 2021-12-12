@@ -182,13 +182,19 @@ System.out.println (exp.getMessage());
         <div class="projects_data">
           <div class="dat">
 <% for(int i=0;i<listPost.size();i++){ %>
-        <h4> <%= listPost.get(i) %> </h4> <a href="#"><img src="images/remove.png"> </a>
+        <h4> <%= listPost.get(i) %> </h4> 
+        <a href="servletUrl?param=value"><img src="images/remove.png"></a>
+        <form action="FileDownload" method="get">
+            <input type="text" value="<%= listPost.get(i) %>" hidden="hidden" name="poste">
+            <input type="text" value="<%= email %>" hidden="hidden" name="email">
+            <button>télécharger les CV</button>
+        </form>
 <% }%>
           
-            <form action="PosteServlet" method="post" >
+            <form action="PosteServlet" method="post" class="inline-post">
                 <input class="ajouter" type="text" name="name" value="<%= name %>" hidden="hidden">
                 <input class="ajouter" type="text" name="email" value="<%= email %>" hidden="hidden"> 
-              <input class="ajouter" type="text" name="post" placeholder="Ajouter poste">
+                <input class="ajouter" type="text" name="post" placeholder="Ajouter poste" style="width: 240px;">
             
             <button type="submit"> <img src="images/add.png"></button>
             </form>
