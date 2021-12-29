@@ -19,8 +19,7 @@ body {
 }
 
 .local {
-  position: relative;
-  top: 8px;
+  margin-left: 20px;
 }
 
 #emploi {
@@ -61,10 +60,10 @@ body {
   font-size: 15px;
   transition-duration: 0.4s;
   cursor: pointer;
-  width: 150px;
+  width: 200px;
   margin: 10px;
   border-radius: 15px;
-  margin-left: 350px;
+  margin-left: 300px;
 
 }
 
@@ -186,4 +185,11 @@ input[type="file"] {
 {
     color: red;
     margin-left: 350px;
+}
+
+.inline-data
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

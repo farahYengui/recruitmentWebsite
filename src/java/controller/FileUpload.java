@@ -144,7 +144,11 @@ public class FileUpload extends HttpServlet {
 	        	pdfFileBytes.close();
 	        }
 	    }
+             request.setAttribute("email", email);
+              request.setAttribute("poste", poste);
             request.setAttribute("message", message);
+            System.out.print(poste);
+            System.out.print(email);
             request.getRequestDispatcher( "intranetCan.jsp").forward( request, response );
         processRequest(request, response);
     }

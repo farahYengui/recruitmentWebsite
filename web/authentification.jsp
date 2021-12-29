@@ -30,8 +30,8 @@
       <div><a class="logo" href="#">Carriere</a>
         <p>Mettons-nous au travail</p>
       </div>
-      <li><a href="#connexion">Connexion</a></li>
-      <li><a href="#offres">Offres</a></li>
+      <li><a href="#">Connexion</a></li>
+      <li><a href="offres.jsp">Offres</a></li>
     </ul>
   </nav>
   <div class="nav-margin"></div>

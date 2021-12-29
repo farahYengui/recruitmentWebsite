@@ -44,6 +44,18 @@
         <servlet-name>FileDownload</servlet-name>
         <servlet-class>controller.FileDownload</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <servlet-class>controller.DeletePostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateEntServlet</servlet-name>
+        <servlet-class>controller.UpdateEntServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PosteServlet</servlet-name>
         <url-pattern>/PosteServlet</url-pattern>
@@ -87,6 +99,14 @@
     <servlet-mapping>
         <servlet-name>FileDownload</servlet-name>
         <url-pattern>/FileDownload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <url-pattern>/DeletePostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateEntServlet</servlet-name>
+        <url-pattern>/UpdateEntServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

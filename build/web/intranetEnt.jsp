@@ -70,8 +70,6 @@ System.out.println (exp.getMessage());
         <p>Mettons-nous au travail</p>
       </div>
       <li><a href="javascript:disconnect();">Déconnexion</a></li>
-      <li><a href="entreprise.jsp">Candidats</a></li>
-      <li><a href="intranetEnt.jsp">Compte</a></li>
     </ul>
   </nav>
   <div class="nav-margin"></div> 
@@ -92,11 +90,11 @@ System.out.println (exp.getMessage());
         <div class="info_data">
           <div class="data">
             <h4> &nbsp; &nbsp;Nom </h4>
-            <form>
+            <form method="post" action="UpdateEntServlet">
               <div class=" input ">
                 
 
-                <input class="myInput" type="text" name="name" placeholder="Nom" disabled="disabled" value= "<%= name %>">
+                <input class="myInput" type="text" name="name" placeholder="Nom" value= "<%= name %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -106,10 +104,10 @@ System.out.println (exp.getMessage());
           </div>
           <div class="data">
             <h4> &nbsp; &nbsp;Local </h4>
-            <form>
+            <form method="post" action="UpdateEntServlet">
               <div class=" input ">
 
-                <input class="myInput" type="text" name="adress" placeholder="Local" disabled="disabled" value= "<%= adress %>">
+                <input class="myInput" type="text" name="adress" placeholder="Local" value= "<%= adress %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -120,10 +118,10 @@ System.out.println (exp.getMessage());
 
           <div class="data">
             <h4> &nbsp; &nbsp;Domaine </h4>
-            <form>
+            <form method="post" action="UpdateEntServlet">
               <div class=" input ">
 
-                <input class="myInput" type="text" name="domain" placeholder="Domaine" disabled="disabled" value= "<%= domain %>">
+                <input class="myInput" type="text" name="domain" placeholder="Domaine" value= "<%= domain %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -133,10 +131,10 @@ System.out.println (exp.getMessage());
           </div>
           <div class="data">
             <h4> &nbsp; &nbsp;Description </h4>
-            <form>
+            <form method="post" action="UpdateEntServlet">
               <div class=" input ">
 
-                <input class="myInput" type="text" name="description" placeholder="Description" disabled="disabled" value= "<%= description %>">
+                <input class="myInput" type="text" name="description" placeholder="Description" value= "<%= description %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -147,10 +145,10 @@ System.out.println (exp.getMessage());
 
           <div class="data">
             <h4> &nbsp; &nbsp;Numéro </h4>
-            <form>
+            <form method="post" action="UpdateEntServlet">
               <div class=" input ">
 
-                <input class="myInput" type="text" name="phone" placeholder="numéro" disabled="disabled" value= "<%= phone %>">
+                <input class="myInput" type="text" name="phone" placeholder="numéro" value= "<%= phone %>">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -161,10 +159,10 @@ System.out.println (exp.getMessage());
 
           <div class="data">
             <h4> &nbsp; &nbsp;Email </h4>
-            <form>
+            <form method="post" action="UpdateEntServlet">
               <div class=" input ">
 
-                <input class="myInput" type="email" name="email" placeholder="Email" disabled="disabled" value= "<%= email %>">
+                <input class="myInput" type="email" name="email" placeholder="Email" value= "<%= email %>" disabled="disabled">
 
                 <input type="submit" value="modifier" class="envoyer">
               </div>
@@ -183,22 +181,27 @@ System.out.println (exp.getMessage());
           <div class="dat">
 <% for(int i=0;i<listPost.size();i++){ %>
         <h4> <%= listPost.get(i) %> </h4> 
-        <a href="servletUrl?param=value"><img src="images/remove.png"></a>
+         <form method="post" action="DeletePostServlet" >
+                
+            <input class="ajouter" type="text" name="post" value="<%= listPost.get(i)  %>" hidden="hidden">
+            <input class="ajouter" type="text" name="email" value="<%= email %>" hidden="hidden"> 
+         <button class="post-button" type="submit"> <img src="images/remove.png"></button>  
+         </form>
         <form action="FileDownload" method="get">
             <input type="text" value="<%= listPost.get(i) %>" hidden="hidden" name="poste">
             <input type="text" value="<%= email %>" hidden="hidden" name="email">
             <button>télécharger les CV</button>
         </form>
 <% }%>
-          
+            </div>
             <form action="PosteServlet" method="post" class="inline-post">
                 <input class="ajouter" type="text" name="name" value="<%= name %>" hidden="hidden">
                 <input class="ajouter" type="text" name="email" value="<%= email %>" hidden="hidden"> 
                 <input class="ajouter" type="text" name="post" placeholder="Ajouter poste" style="width: 240px;">
             
-            <button type="submit"> <img src="images/add.png"></button>
+            <button class="post-button" type="submit"> <img src="images/add.png"></button>
             </form>
-          </div>
+        
         </div>
 
 
@@ -206,6 +209,7 @@ System.out.println (exp.getMessage());
     </div>
   </div>
 <script src="disconnect.js"></script>
+
 </body>
 
 </html>

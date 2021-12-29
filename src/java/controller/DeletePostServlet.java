@@ -7,22 +7,22 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
  * @author RYZEN7
  */
-public class loginCanServlet extends HttpServlet {
+public class DeletePostServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +41,10 @@ public class loginCanServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet loginCanServlet</title>");            
+            out.println("<title>Servlet DeleteServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet loginCanServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DeleteServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,46 +76,28 @@ public class loginCanServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session=request.getSession(true);
-        String passworddb="";
-        String name ="";
-        try
-{
-	Class.forName("com.mysql.jdbc.Driver"); //load driver
-	
-	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC","root",""); //create connection
-	{
-        String email = request.getParameter("email");
-        String password = request.getParameter("password"); 
-         System.out.println(email);
-        System.out.println(password);
-		PreparedStatement pstmt=con.prepareStatement("select * from candidat where email=? ");
-		pstmt.setString(1,email);		
-		ResultSet rs=pstmt.executeQuery(); 
-		while(rs.next())
-		{
-		name =rs.getString("name");
-		passworddb=rs.getString("password");
-                }
-			if(password.equals(passworddb))
-			{
-                                session.setAttribute("name" ,name);
-                                session.setAttribute("email" , email);
-                                request.getRequestDispatcher( "intranetCan.jsp").forward( request, response );
-                             }
-                        else
-                        {
-                            request.getRequestDispatcher( "authentification.jsp").forward( request, response );
-                        }
-                
-		con.close();	
-	}
-	
-}
-catch(Exception e)
-{
-	out.println(e);
-}
+        String post = request.getParameter("post"); 
+           String email = request.getParameter("email");                            
+try
+        {
+
+        Class.forName("com.mysql.jdbc.Driver");// charger le driver ODBC
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/recruitment_db?useUnicode=true &useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false& serverTimezone=UTC", "root", "");
+         
+        PreparedStatement pstmt3 = con.prepareStatement("delete from poste where post=? AND email=? ");
+ pstmt3.setString(1,post);
+        pstmt3.setString(2,email);
+
+
+        int result = pstmt3.executeUpdate();
+
+
+        }catch(Exception e)
+        {
+       System.out.println(e.getMessage());
+             
+        }
+                      request.getRequestDispatcher( "intranetEnt.jsp").forward( request, response );          
         processRequest(request, response);
     }
 

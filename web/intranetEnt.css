@@ -65,12 +65,16 @@ and open the template in the editor.
     letter-spacing: 5px;
   }
 
-  .wrapper .right .info_data,
-  .wrapper .right .projects_data {
+  .wrapper .right .info_data
+  {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-gap: 20px;
+  }
+  .wrapper .right .projects_data {
+      display: flex;
+      flex-direction: column;
   }
 
   .wrapper .right .info_data .data,
@@ -162,7 +166,7 @@ and open the template in the editor.
 
   .dat {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 340px 30px 50px;
     grid-template-rows: auto;
     grid-gap: 20px;
 
@@ -331,9 +335,20 @@ input[type=submit] {
 }
 .inline-post
 {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    
 }
-
-
+.post-button
+{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 
